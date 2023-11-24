@@ -5,9 +5,11 @@ require("dotenv").config();
 const applyMiddleware = require("./middlewares/applyMiddlewares");
 const connectDB = require("./db/connectDB");
 const globalErrorHandler = require("./utils/globalErrorHandler");
+const router = require("./routes/authentication");
 
 applyMiddleware(app);
 
+app.use(router);
 app.get("/health", (req, res) => {
   res.send("Medical Camp is running....");
 });
