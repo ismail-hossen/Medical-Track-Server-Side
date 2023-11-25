@@ -1,9 +1,13 @@
 const createAuthCookie = require("../../controllers/authentication/createAuthCookie");
 const logout = require("../../controllers/authentication/logout");
+const {
+  createUser,
+} = require("../../controllers/authentication/users.controller");
 
-const router = require("express").Router();
+const authRouter = require("express").Router();
 
-router.post("/jwt", createAuthCookie);
-router.post("/logout", logout);
+authRouter.post("/jwt", createAuthCookie);
+authRouter.post("/logout", logout);
+authRouter.post("/users", createUser);
 
-module.exports = router;
+module.exports = authRouter;
