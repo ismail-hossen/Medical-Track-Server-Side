@@ -6,10 +6,12 @@ const applyMiddleware = require("./middlewares/applyMiddlewares");
 const connectDB = require("./db/connectDB");
 const globalErrorHandler = require("./utils/globalErrorHandler");
 const authRouter = require("./routes/authentication");
+const campRouter = require("./routes/camp/camp.routes");
 
 applyMiddleware(app);
 
 app.use(authRouter);
+app.use(campRouter);
 app.get("/health", (req, res) => {
   res.send("Medical Camp is running....");
 });
