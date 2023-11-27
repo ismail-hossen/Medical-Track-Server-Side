@@ -22,6 +22,15 @@ const campsByOrganizer = async (req, res, next) => {
   }
 };
 
+const campById = async (req, res, next) => {
+  try {
+    const result = await CampModel.findOne({ _id: req.params.campId });
+    res.status(200).send(result);
+  } catch (err) {
+    next(err);
+  }
+};
+
 const deleteCamp = async (req, res, next) => {
   try {
     const result = await CampModel.deleteOne({ _id: req.params.campId });
@@ -43,4 +52,20 @@ const updateCamp = async (req, res, next) => {
   }
 };
 
-module.exports = { createCamp, campsByOrganizer, deleteCamp, updateCamp };
+const getPopularCamps = async (req, res, next) => {
+  try {
+    const result = await CampModel.find({}).sort({ participants: -1 }).limit(6);
+    res.status(200).send(result);
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports = {
+  createCamp,
+  campsByOrganizer,
+  deleteCamp,
+  updateCamp,
+  getPopularCamps,
+  campById,
+};

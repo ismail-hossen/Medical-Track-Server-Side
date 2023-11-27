@@ -7,11 +7,13 @@ const connectDB = require("./db/connectDB");
 const globalErrorHandler = require("./utils/globalErrorHandler");
 const authRouter = require("./routes/authentication");
 const campRouter = require("./routes/camp/camp.routes");
+const regCampRouter = require("./routes/participants/regCamp.routes");
 
 applyMiddleware(app);
 
 app.use(authRouter);
 app.use(campRouter);
+app.use(regCampRouter);
 app.get("/health", (req, res) => {
   res.send("Medical Camp is running....");
 });

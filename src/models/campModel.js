@@ -24,7 +24,7 @@ const CampSchema = new Schema({
     required: true,
   },
   campFees: {
-    type: Number,
+    type: Number || String,
     required: true,
   },
   services: {
