@@ -28,6 +28,28 @@ const regCampsByEmail = async (req, res, next) => {
   }
 };
 
+const regCampsByOrganizer = async (req, res, next) => {
+  try {
+    const email = req.params.email;
+    const result = await RegCampModel.find({ "camp.organizer.email": email });
+    res.status(200).send(result);
+  } catch (err) {
+    next(err);
+  }
+};
+
+const updateRegCamp = async (req, res, next) => {
+  try {
+    const result = await RegCampModel.updateOne(
+      { _id: req.params.campId },
+      { $set: req.body }
+    );
+    res.status(200).send(result);
+  } catch (err) {
+    next(err);
+  }
+};
+
 const deleteRegCamp = async (req, res, next) => {
   try {
     const id = req.params.campId;
@@ -42,4 +64,6 @@ module.exports = {
   createRegCamp,
   regCampsByEmail,
   deleteRegCamp,
+  regCampsByOrganizer,
+  updateRegCamp,
 };
