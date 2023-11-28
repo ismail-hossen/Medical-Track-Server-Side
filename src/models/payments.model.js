@@ -13,6 +13,10 @@ const PaymentSchema = new Schema({
       type: String || Number,
     },
   },
+  email: {
+    type: String,
+    required: true,
+  },
   transactionId: {
     type: String,
     required: true,

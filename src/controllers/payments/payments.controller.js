@@ -25,4 +25,13 @@ const createPayHistory = async (req, res, next) => {
   }
 };
 
-module.exports = { createStripePayIntent, createPayHistory };
+const allPayHistory = async (req, res, next) => {
+  try {
+    const result = await PaymentModel.find({ email: req.params.email });
+    res.send(result);
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { createStripePayIntent, createPayHistory, allPayHistory };

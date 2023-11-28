@@ -11,6 +11,19 @@ const createUser = async (req, res, next) => {
   }
 };
 
+const updateUser = async (req, res, next) => {
+  try {
+    const userEmail = req.params.email;
+    const result = await UserModel.findOneAndUpdate(
+      { email: userEmail },
+      req.body
+    );
+    res.status(201).send(result);
+  } catch (err) {
+    next(err);
+  }
+};
+
 const getUserRole = async (req, res, next) => {
   try {
     const user = req.params;
@@ -24,4 +37,5 @@ const getUserRole = async (req, res, next) => {
 module.exports = {
   createUser,
   getUserRole,
+  updateUser,
 };
