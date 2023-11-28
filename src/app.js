@@ -8,12 +8,15 @@ const globalErrorHandler = require("./utils/globalErrorHandler");
 const authRouter = require("./routes/authentication");
 const campRouter = require("./routes/camp/camp.routes");
 const regCampRouter = require("./routes/participants/regCamp.routes");
+const paymentsRouter = require("./routes/payments/payments.routes");
 
 applyMiddleware(app);
 
 app.use(authRouter);
 app.use(campRouter);
 app.use(regCampRouter);
+app.use(paymentsRouter);
+
 app.get("/health", (req, res) => {
   res.send("Medical Camp is running....");
 });
