@@ -1,5 +1,6 @@
-const jwt = require("jsonwebtoken");
 require("dotenv").config();
+const jwt = require("jsonwebtoken");
+const { ACCESS_TOKEN_SECRET } = require("../../config/defaults");
 
 const createAuthCookie = (req, res, next) => {
   try {

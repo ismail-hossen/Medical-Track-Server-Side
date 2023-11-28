@@ -5,13 +5,14 @@ const {
   getUserRole,
   updateUser,
 } = require("../../controllers/authentication/users.controller");
+const tokenVerify = require("../../utils/TokenVerify");
 
 const authRouter = require("express").Router();
 
 authRouter.post("/jwt", createAuthCookie);
 authRouter.post("/logout", logout);
 authRouter.post("/users", createUser);
-authRouter.patch("/users/:email", updateUser);
+authRouter.patch("/users/:email", tokenVerify, updateUser);
 authRouter.get("/users/:email", getUserRole);
 
 module.exports = authRouter;
