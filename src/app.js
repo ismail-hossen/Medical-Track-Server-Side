@@ -1,9 +1,7 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
-const port = process.env.PORT || 5000;
-require("dotenv").config();
 const applyMiddleware = require("./middlewares/applyMiddlewares");
-const connectDB = require("./db/connectDB");
 const globalErrorHandler = require("./utils/globalErrorHandler");
 const authRouter = require("./routes/authentication");
 const campRouter = require("./routes/camp/camp.routes");
@@ -22,7 +20,7 @@ app.use(paymentsRouter);
 app.use(reviewRouter);
 
 app.get("/health", (req, res) => {
-  res.send("Medical Camp is running....");
+  res.send("Medical Camp is running...");
 });
 
 app.all("*", (req, _res, next) => {
@@ -34,11 +32,4 @@ app.all("*", (req, _res, next) => {
 // error handling middleware
 app.use(globalErrorHandler);
 
-const main = async () => {
-  await connectDB();
-  app.listen(port, () => {
-    console.log(`Medical Camp Management Server is running on port ${port}`);
-  });
-};
-
-main();
+module.exports = app;
