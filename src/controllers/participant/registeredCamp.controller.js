@@ -28,6 +28,22 @@ const regCampsByEmail = async (req, res, next) => {
   }
 };
 
+const completedCampsByEmail = async (req, res, next) => {
+  try {
+    const currentDateTime = new Date();
+    const email = req.params.email;
+    const result = await RegCampModel.find({
+      email,
+      "camp.dateTime": { $lt: currentDateTime },
+      paymentStatus: true,
+      confirmationStatus: "Confirm",
+    });
+    res.status(200).send(result);
+  } catch (err) {
+    next(err);
+  }
+};
+
 const regCampsByOrganizer = async (req, res, next) => {
   try {
     const email = req.params.email;
@@ -66,4 +82,5 @@ module.exports = {
   deleteRegCamp,
   regCampsByOrganizer,
   updateRegCamp,
+  completedCampsByEmail,
 };

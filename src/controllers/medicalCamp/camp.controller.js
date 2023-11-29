@@ -61,8 +61,18 @@ const getPopularCamps = async (req, res, next) => {
   }
 };
 
+const getAllCamps = async (req, res, next) => {
+  try {
+    const result = await CampModel.find({});
+    res.status(200).send(result);
+  } catch (err) {
+    next(err);
+  }
+};
+
 module.exports = {
   createCamp,
+  getAllCamps,
   campsByOrganizer,
   deleteCamp,
   updateCamp,

@@ -5,6 +5,7 @@ const {
   updateCamp,
   getPopularCamps,
   campById,
+  getAllCamps,
 } = require("../../controllers/medicalCamp/camp.controller");
 const tokenVerify = require("../../utils/TokenVerify");
 const organizerVerify = require("../../utils/organizerVerify");
@@ -19,6 +20,7 @@ campRouter.get(
 );
 campRouter.get("/camp-by-id/:campId", campById);
 campRouter.get("/popular-camps", getPopularCamps);
+campRouter.get("/camps", getAllCamps);
 campRouter.post("/create-camp", tokenVerify, organizerVerify, createCamp);
 campRouter.patch(
   "/update-camp/:campId",
