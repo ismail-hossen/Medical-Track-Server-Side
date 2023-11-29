@@ -10,11 +10,13 @@ const campRouter = require("./routes/camp/camp.routes");
 const regCampRouter = require("./routes/participants/regCamp.routes");
 const paymentsRouter = require("./routes/payments/payments.routes");
 const reviewRouter = require("./routes/reviews/reviews.routes");
+const upcomingCampRouter = require("./routes/camp/upcomingCamps.routes");
 
 applyMiddleware(app);
 
 app.use(authRouter);
 app.use(campRouter);
+app.use(upcomingCampRouter);
 app.use(regCampRouter);
 app.use(paymentsRouter);
 app.use(reviewRouter);
