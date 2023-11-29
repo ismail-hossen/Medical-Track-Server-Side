@@ -3,7 +3,7 @@ const {
   createPayHistory,
   allPayHistory,
 } = require("../../controllers/payments/payments.controller");
-const tokenVerify = require("../../utils/TokenVerify");
+const tokenVerify = require("../../utils/tokenVerify");
 
 const paymentsRouter = require("express").Router();
 

@@ -7,8 +7,8 @@ const {
   campById,
   getAllCamps,
 } = require("../../controllers/medicalCamp/camp.controller");
-const tokenVerify = require("../../utils/TokenVerify");
 const organizerVerify = require("../../utils/organizerVerify");
+const tokenVerify = require("../../utils/tokenVerify");
 
 const campRouter = require("express").Router();
 

@@ -6,8 +6,8 @@ const {
   updateRegCamp,
   completedCampsByEmail,
 } = require("../../controllers/participant/registeredCamp.controller");
-const tokenVerify = require("../../utils/TokenVerify");
 const organizerVerify = require("../../utils/organizerVerify");
+const tokenVerify = require("../../utils/tokenVerify");
 
 const regCampRouter = require("express").Router();
 

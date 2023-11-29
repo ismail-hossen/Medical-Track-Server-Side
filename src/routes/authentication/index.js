@@ -5,7 +5,7 @@ const {
   getUserRole,
   updateUser,
 } = require("../../controllers/authentication/users.controller");
-const tokenVerify = require("../../utils/TokenVerify");
+const tokenVerify = require("../../utils/tokenVerify");
 
 const authRouter = require("express").Router();
 

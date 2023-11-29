@@ -1,8 +1,8 @@
 const {
   createUpcomingCamp,
 } = require("../../controllers/medicalCamp/upcomingCamp.controller");
-const tokenVerify = require("../../utils/TokenVerify");
 const organizerVerify = require("../../utils/organizerVerify");
+const tokenVerify = require("../../utils/tokenVerify");
 
 const upcomingCampRouter = require("express").Router();
 
